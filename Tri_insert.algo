@@ -1,0 +1,24 @@
+FUNCTION tri_par_insertion(tab : ARRAY_OF INTEGER[];) : INTEGER
+VAR
+    element,i,j : INTEGER := 0;
+BEGIN
+    FOR i FROM 1 TO tab.length STEP 1  DO
+        element := tab[i];
+        j := i - 1;
+        WHILE (j >= 0 AND tab[j] > element) DO
+            tab[j+1] := tab[j];
+            j := j - 1;
+        END_WHILE
+        tab[j+1] := element;
+    END_FOR
+    RETURN tab[i].length;
+END
+
+ALGORITHM Tri_insert
+VAR
+    tableau : ARRAY_OF INTEGER[] := [5, 1, 6, 2, 3, 4];
+    tableauTrie : ARRAY_OF INTEGER[];
+BEGIN
+    tableauTrie := tri_par_insertion(tableau);
+    Write(tableauTrie);
+END
